@@ -1,0 +1,10 @@
+body{
+font-family: 'Libre Franklin', sans-serif;
+}
+
+.div {
+    border: 5px outset gray;
+    background-color: #DEDEDE;
+    text-align: center;
+}
+
