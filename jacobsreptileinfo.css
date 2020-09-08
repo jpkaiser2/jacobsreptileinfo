@@ -52,3 +52,15 @@ li a:hover {
 largeText {
   font-size: 200px;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #E8E8E8;
+}
+.grid-item {
+  background-color: ;
+  border: 5px solid black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
