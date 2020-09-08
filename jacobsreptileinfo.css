@@ -49,4 +49,6 @@ li a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+largeText {
+  font-size: 200px;
+}
