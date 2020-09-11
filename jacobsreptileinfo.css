@@ -73,3 +73,18 @@ largeText {
   font-size: 16px;
   cursor: pointer;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #646464;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #909090;
+}
