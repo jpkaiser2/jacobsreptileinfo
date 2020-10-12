@@ -96,6 +96,16 @@ largeText {
    color: white;
    text-align: center;
 }
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  padding: 20px;
+  
+}
+
 /* Header/Blog Title */
 .header {
   padding: 30px;
@@ -103,7 +113,9 @@ largeText {
   text-align: center;
   background: white;
 }
-
+hr {
+  border: 1px solid gray;
+}
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {
@@ -116,6 +128,7 @@ largeText {
   float: left;
   width: 25%;
   padding-left: 20px;
+  
 }
 
 /* Fake image */
@@ -125,6 +138,7 @@ largeText {
    background-color: white;
    padding: 20px;
    margin-top: 20px;
+   text-align: left;
 }
 
 /* Clear floats after the columns */
@@ -132,4 +146,13 @@ largeText {
   content: "";
   display: table;
   clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
 }
