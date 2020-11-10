@@ -1,0 +1,6 @@
+User-agent:*
+
+Disallow: /404.html/
+Disallow: /jacobsreptileinfo.css/
+
+Sitemap: https://www.jacobsreptileinfo.com/sitemap.xml
