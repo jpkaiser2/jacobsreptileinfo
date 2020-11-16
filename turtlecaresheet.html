@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.jacobsreptileinfo.com/jacobsreptileinfo.css">
+        <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
 <ul>
   <li><a class="active" href="index.html">Home</a></li>
   <li><a href="turtles.html">Turtles</a></li>
@@ -80,11 +81,17 @@
            <a href="https://zoomed.com">Zoo Med</a>
            <br>
            <a href="https://www.aqueon.com">Aqueon</a>
+           <div class="commentbox"></div>
     </div>
-   
+
    <div class="footer">
        <a href="https://www.jacobsreptileinfo.com/Jacob’s Reptile Info Privacy Policy.pdf">Privacy Policy</a>
    </div>
 
 </head>
 
+<script>
+    window.addEventListener("load",function() {
+      commentBox('5074335802851328-proj');
+    });
+   </script>
