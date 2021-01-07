@@ -11,7 +11,6 @@ font-family: 'Libre Franklin', sans-serif;
 .homePageImage {
     border: 5px outset black;
     background-color: #000000;
-    text-align: center;
 }
 
 }
@@ -85,13 +84,12 @@ largeText {
   box-sizing: border-box;
 }
 
-/* Add a gray background color with some padding */
 body {
   padding: 20px;
   
 }
 
-/* Header/Blog Title */
+
 .header {
   padding: 30px;
   font-size: 40px;
