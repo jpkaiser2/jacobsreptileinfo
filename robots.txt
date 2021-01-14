@@ -1,6 +1,8 @@
-User-agent: *
+User-agent:*
 
 Disallow: /404.html/
 Disallow: /jacobsreptileinfo.css/
+Disallow: /cookiePolicy.html/
+Disallow: /Jacob’s%20Reptile%20Info%20Privacy%20Policy.pdf/
 
 Sitemap: https://www.jacobsreptileinfo.com/sitemap.xml
