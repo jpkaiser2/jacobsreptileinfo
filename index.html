@@ -5,6 +5,7 @@
     <meta name="description" content="Learn how to take care of your reptiles the right way. From tank setups to food, we have all the information you will need to take care of your reptile.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="bearded dragon tanks, reptile, jacob's reptile info, reptile tank, reptile supplies, lizard cage, turtle tank, betta fish tank setup">
+        <meta name="p:domain_verify" content="e68510e44927f384eb3e645b8ab60f71" />
         <link rel = "icon" href =
         "https://jacobsreptileinfo.com/logo2.png"
                 type = "image/x-icon">
@@ -55,7 +56,49 @@ body, html {
     min-height: 400px;
   }
 }
+    * {
+        box-sizing: border-box;
+    }
 
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Float four columns side by side */
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding */
+    .row {
+        margin: 0 -5px;
+    }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Style the counter cards */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
+    }
 
 
 </style>
@@ -71,7 +114,7 @@ body, html {
   <li><a class="active" href="index.html">Home</a></li>
   <li><a href="turtles.html">Turtles</a></li>
   <li><a href="lizards.html">Lizards</a></li>
-  <li><a href="fish.html">Fish</a></li>
+  <!--<li><a href="fish.html">Fish</a></li> -->
   <li><a href="feederInsects.html">Feeder Insects</a></li>
   <li><a href="frogs.html">Frogs</a></li>
 </ul>
@@ -89,7 +132,41 @@ body, html {
   <p>This website was started to teach people how to take care of their reptiles the right way. Many times when people buy a reptile, they are at a pet store and decide to take it home without knowing a thing about it. They take it home, feed it the wrong foods, give it the wrong enclosure, give it the wrong lighting, and so on. Pet stores usually tell people the wrong information on their reptiles and sell them the wrong supplies. On this website, there are many specific, informative  articles on reptiles. New articles are put on this site every 1-2 weeks. If you have any article suggestions or questions about your reptile, please e-mail contact@jacobsreptileinfo.com. </p>
   <br>
   <br>
+    
+  <div class="row">
 
+      <div class="column">
+          <div class="card">
+              <h3>Turtles</h3>
+              <img src="https://www.jacobsreptileinfo.com/turtle2.png" width="100%" height="100%">
+              <p>Turtles might seem easy to care for, but they are not. On this website, you will find many thorough articles about turtles</p>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="card">
+              <h3>Lizards</h3>
+              <img src="https://jacobsreptileinfo.com/bearded_dragon.png" width="70%" height="80%">
+              <p>Lizards are fun reptiles to care for. On this website, there are articles about lizard care that are helpful and descriptive</p>
+          </div>
+      </div>
+
+      <div class="column">
+          <div class="card">
+              <h3>Frogs</h3>
+              <img src="https://www.jacobsreptileinfo.com/frog.png" width="70%" height="80%">
+              <p>Frogs are great for beginner reptile keepers. They are easy to take care of and are more affordable than most other reptiles</p>
+          </div>
+      </div>
+      <div class="column">
+          <div class="card">
+              <h3>Feeder Insects</h3>
+              
+              <p>Most reptiles eat live insects. This page shows hot to care for them and make sure they provide the most nutrients as possible</p>
+          </div>
+      </div>
+
+  </div>
   <br>
   <h2>Featured Articles</h2>
 
