@@ -1,279 +1,119 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Jacob's Reptile Info</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 
-<!--Creates a web app for Apple devices-->
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style"content="black"/>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="scripts/config.js"></script>
+    <script type="module">
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
-<!-- SEO -->
-<title>Jacob's Reptile Info</title>
-<meta name="description" content="Learn how to take care of your reptiles the right way. From tank setups to food, we have all the information you will need to take care of your reptile.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="bearded dragon tanks, reptile, jacob's reptile info, reptile tank, reptile supplies, lizard cage, turtle tank, betta fish tank setup">
-<meta name="p:domain_verify" content="e68510e44927f384eb3e645b8ab60f71" />
-<link rel="icon" href="https://jacobsreptileinfo.com/logo2.png"
-      type="image/x-icon">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180902929-1"></script>
-<script>window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      // Get a Firestore reference
+      const db = firebase.firestore();
 
-    gtag('config', 'UA-180902929-1');</script>
-<!-- SEO -->
-<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=616b83b09f6bb0001305bbd1&product=inline-follow-buttons" async="async"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.jacobsreptileinfo.com/jacobsreptileinfo.css">
+      // Function to read data from Firestore and generate HTML table
+      async function generateArticlesTable() {
+        try {
+          // Reference to the "articles" collection
+          const collectionRef = db.collection("articles");
 
-<style>
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Lato", sans-serif;
-    }
+          // Get all documents in the collection
+          const snapshot = await collectionRef.get();
 
-    body, html {
-        height: 100%;
-        color: #777;
-        line-height: 1.8;
-    }
+          const container = document.createElement("div");
 
-    /* Create a Parallax Effect */
-    .bgimg-1, .bgimg-2, .bgimg-3 {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+          // Iterate over each document in the collection
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            const title = data.title || "";
+            const description = data.description || "";
+            const imageURL = data.imageURL || "";
+            const path = data.path || "";
+            const date = data.date || "";
+            const category = data.category || "";
+            container.innerHTML += `<div class="box" onclick="window.open('${path}', '_self')"><h2>${title}</h2><p>${date}</p><img width="100%" src="${imageURL}"><p>${description}</p></div>`;
+          });
 
-
-
-
-
-    .w3-wide {
-        letter-spacing: 10px;
-    }
-
-    .w3-hover-opacity {
-        cursor: pointer;
-    }
-
-    /* Turn off parallax scrolling for tablets and phones */
-    @media only screen and (max-device-width: 1600px) {
-        .bgimg-1, .bgimg-2, .bgimg-3 {
-            background-attachment: scroll;
-            min-height: 400px;
+          // Append the table container to the body
+          document.body.appendChild(container);
+        } catch (error) {
+          console.error("Error generating HTML table:", error);
         }
-    }
+      }
 
-    * {
-        box-sizing: border-box;
-    }
+      generateArticlesTable();
+    </script>
+  </head>
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
+  <body>
+    <header-component></header-component>
+    <br />
+    <br />
+    <div class="titleBox">
+      <h1 class="titleText">Jacob's Reptile Info</h1>
+      <p style="color: #fff">
+        Welcome to Jacob's Reptile Info, your ultimate online destination for
+        comprehensive and captivating information about reptiles. This website is
+        full of knowledge designed to educate reptile
+        enthusiasts, hobbyists, and curious minds alike.
+      </p>
+    </div>
+    <center>
+      <img width="15%" src="assets/zoe.png" />
+    </center>
+    <img class="homeSvgBg" src="assets/homeBg.svg" />
 
-    /* Float four columns side by side */
-    .column {
-        float: left;
-        width: 25%;
-        padding: 0 10px;
-    }
-
-    /* Remove extra left and right margins, due to padding */
-    .row {
-        margin: 0 -5px;
-    }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-    /* Responsive columns */
-    @media screen and (max-width: 600px) {
-        .column {
-            width: 100%;
-            display: block;
-            margin-bottom: 20px;
-        }
-    }
-
-    /* Style the counter cards */
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        padding: 16px;
+    <!--<footer-component></footer-component>-->
+  </body>
+  <html>
+    <style>
+      body {
+        background-color: #3c4565;
+        font-family: "Montserrat", sans-serif;
+      }
+      .homeSvgBg {
+        position: fixed;
+        z-index: -1;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      .titleText {
+        color: white;
         text-align: center;
-        background-color: #f1f1f1;
-    }
-</style>
-<body>
-
-
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.jacobsreptileinfo.com/jacobsreptileinfo.css">
-    <ul>
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="turtles.html">Turtles</a></li>
-        <li><a href="lizards.html">Lizards</a></li>
-        <!--<li><a href="fish.html">Fish</a></li> -->
-        <li><a href="feederInsects.html">Feeder Insects</a></li>
-        <li><a href="frogs.html">Frogs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="https://www.forum.jacobsreptileinfo.com" target="_blank">Forum</a></li>
-    </ul>
-    <!-- First Parallax Image-->
-    <img src="https://www.jacobsreptileinfo.com/websiteHomePageImage.png" width="200%" height="100%">
-
-    </div>
-    </div>
-
-    <!-- Container (About Section) -->
-    <div class="w3-content w3-container w3-padding-64">
-
-        <center>
-            <h1 class="w3-center">JACOB'S REPTILE INFO</h1>
-            <p>This website was started to teach people how to take care of their reptiles the right way. Many times when people buy a reptile, they are at a pet store and decide to take it home without knowing a thing about it. They take it home, feed it the wrong foods, give it the wrong enclosure, give it the wrong lighting, and so on. Pet stores usually tell people the wrong information on their reptiles and sell them the wrong supplies. On this website, there are many specific, informative  articles on reptiles. New articles are put on this site every 1-2 weeks. If you have any article suggestions or questions about your reptile, please e-mail contact@jacobsreptileinfo.com. </p>
-            <br>
-            <br>
-            <div class="sharethis-inline-follow-buttons"></div>
-
-            <br>
-            <h2>Featured Articles</h2>
-
-
-            <div class="w3-container">
-                <div>
-                    <div class="">
-                        <div class="card2">
-                            <center>
-
-                                <img src="https://www.jacobsreptileinfo.com/howToCareForRedEaredSlidersImage.png" width="200" height="150">
-                                <br>
-                                <a href="HowToCareForARedEaredSlider.html">How to Care for a Red Eared Slider</a>
-                        </div>
-
-
-                        <div>
-                            <br>
-                            <div class="card2">
-                                <center>
-                                    <img src="https://www.jacobsreptileinfo.com/howToCareForAfricanDwarfFrogsImage.png" width="200" height="150">
-                                    <br>
-                                    <a href="https://www.jacobsreptileinfo.com/howToCareForAfricanDwarfFrogs.html">How to Care for African Dwarf Frogs</a>
-                            </div>
-
-                            <br>
-                            <div>
-                                <div>
-                                    <div class="card2">
-                                        <center>
-                                            <img src="https://www.jacobsreptileinfo.com/images/How%20to%20Take%20Care%20of%20Live%20Crickets.png" width="200" height="150">
-                                            <br>
-                                            <a href="howToTakeCareOfLiveCrickets.html">How to Take Care of Live Crickets</a>
-                                    </div>
-
-                                    <br>
-                                    <div>
-                                        <div>
-                                            <div>
-                                                <div>
-                                                    <br>
-                                                    <div class="">
-                                                        <div class="card2">
-                                                            <center>
-                                                                <img src="https://www.jacobsreptileinfo.com/whatShouldIFeedMyBeardedDragonImage.png" width="200" height="150">
-                                                                <br>
-                                                                <a href="https://www.jacobsreptileinfo.com/whatShouldIFeedMyBeardedDragon.html">What Should I Feed My Bearded Dragon?</a>
-                                                        </div>
-
-
-                                                        <div>
-                                                            <br>
-                                                            <div>
-                                                                <div class="">
-                                                                    <div class="card2">
-                                                                        <center>
-                                                                            <img src="https://www.jacobsreptileinfo.com/picking-out-the-right-turtle-image.png" width="200" height="200">
-                                                                            <br>
-                                                                            <a href="pickingOutTheRightTurtle.html">Picking out the Right Turtle</a>
-                                                                    </div>
-
-
-                                                                    <div>
-                                                                        <br>
-                                                                        <div>
-                                                                            <div class="card2">
-                                                                                <center>
-                                                                                    <img src="https://www.jacobsreptileinfo.com/images/How%20to%20Take%20Care%20of%20Dubia%20Roaches.png" width="200" height="150">
-                                                                                    <br>
-                                                                                    <a href="howToTakeCareOfLiveDubiaRoaches.html">How to Take Care of Live Dubia Roaches</a>
-                                                                            </div>
-                                                                            <br>
-                                                                            <div>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-                                                                                <br>
-
-
-                                                                                <div class="footer">
-
-                                                                                    <a href="https://www.jacobsreptileinfo.com/Jacob’s Reptile Info Privacy Policy.pdf">Privacy Policy</a>
-                                                                                    <a href="https://www.jacobsreptileinfo.com/disclaimer.html">Disclaimer</a>
-                                                                                    <a href="https://www.jacobsreptileinfo.com/cookiePolicy.html">Cookie Policy</a>
-                                                                                    <a href="https://www.bestreptilesites.com"><img src="https://www.bestreptilesites.com/images2/reptile-banner3.jpg" alt="Best Reptile Sites Directory Med Banner" /></a>
-                                                                                </div>
-
-
-                                                                                <!-- Modal for full size images on click-->
-                                                                                <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-                                                                                    <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-                                                                                    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-                                                                                        <img id="img01" class="w3-image">
-                                                                                        <p id="caption" class="w3-opacity w3-large"></p>
-                                                                                    </div>
-                                                                                </div>
-
-
-
-
-
-                                                                                <script>// Change style of navbar on scroll
-                                                                                    window.onscroll = function () { myFunction() };
-                                                                                    function myFunction() {
-                                                                                        var navbar = document.getElementById("myNavbar");
-                                                                                        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                                                                                            navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-                                                                                        } else {
-                                                                                            navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
-                                                                                        }
-                                                                                    }
-
-                                                                                    // Used to toggle the menu on small screens when clicking on the menu button
-                                                                                    function toggleFunction() {
-                                                                                        var x = document.getElementById("navDemo");
-                                                                                        if (x.className.indexOf("w3-show") == -1) {
-                                                                                            x.className += " w3-show";
-                                                                                        } else {
-                                                                                            x.className = x.className.replace(" w3-show", "");
-                                                                                        }
-                                                                                    }</script>
-                                                                                
-
-</body>
+        font-size: 48px;
+        position: sticky;
+      }
+      .box {
+        transition: box-shadow 0.3s;
+        width: 300px;
+        height: 500px;
+        margin: 50px;
+        border-radius: 10px;
+        background: #fff;
+        float: left;
+        padding: 5px;
+      }
+      .box:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, 0.7);
+      }
+      .titleBox {
+        background-color: #3c4565;
+      }
+    </style>
+  </html>
 </html>
